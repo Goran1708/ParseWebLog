@@ -1,12 +1,8 @@
 class PageByIpAddressMapper
 
-  def initialize(file)
-    @file = file
-  end
-
-  def mapPageByIpAddress
+  def mapPageByIpAddress(file)
     pageByIpAddressMap = Hash.new
-    @file.each do |line|
+    File.open(file).each do |line|
       pageAndIpAddress = line.split(" ")
       if (pageByIpAddressMap.key?(pageAndIpAddress.first))
         pageByIpAddressMap[pageAndIpAddress.first] << pageAndIpAddress.last
